@@ -39,10 +39,12 @@
             newbt.addEventListener("click", function() {
                 console.log("hmm")
                 if (amnt>=cocliss) {
-                    cocliss[mineupgrade] *= 2
-                    console.log('enough')
                     amnt -=cocliss
                     perclick += toclickval
+                    cocliss = cocliss * 2
+                    console.log('enough')
+                   
+                   
                     txt.innerHTML=amnt;
 
                     txt2.innerHTML="per click: " +perclick;
