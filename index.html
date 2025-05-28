@@ -1,13 +1,37 @@
 <!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
 
-<header>
-  <title>Index haha</title>  
-</header>
+
+    </style>
+  </head>
+  <body>
+    <h1>The perfect Games.</h1>
+    <h2>Funny small games.</h2>
+    <div id="file-list"></div>
+  
+    
+    <script>
 
 
+        
+      let div = document.getElementById("file-list")
+      const haaah = ["game1", "game2", "game3"]
+      haaah.forEach(site => {
+        let hs = document.createElement("button")
+        hs.innerHTML=site
+        div.appendChild(hs);
+        hs.addEventListener("click", function() {
+          window.open("./games/"+site+".html")
+        })
+      });
 
-<head>
 
-  <h1>The perfect Games</h1>
-  <h2>Funny small games.</h2>
-</head>
+     
+    </script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>waste Jeff Bezos worth</h1>
+    <h2 id="balance">balance: 191000000000$</h2>
+
+
+    <div id="products">
+       
+        
+    </div>
+
+    <div id="product-list">
+
+    </div>
+</body>
+</html>
+<script>
+    let balance = 191000000000
+   
+    let txt = document.getElementById('balance')
+    let productec=[]
+
+    function updatelist() {
+        let dist = document.getElementById("product-list")
+        dist.childNodes.forEach(element => {
+            null.appendChild(element);
+        });
+        productec.forEach(element => {
+            let haha = document.createElement('h2')
+            haha.innerHTML = element
+            dist.appendChild(haha)
+        });
+    }
+    class newtowar{
+        constructor(imga, price, name) {
+            this.imga = imga;
+            this.price=price;
+            this.amount=0;
+            this.name = name;
+        }
+       
+        spawn() {
+            let divs = document.getElementById("products")
+            let diva = document.createElement("div")
+            divs.appendChild(diva);
+
+            let text3= document.createElement("h1")
+            text3.innerHTML=this.name
+            diva.appendChild(text3)
+            let text = document.createElement("h2")
+            text.innerHTML=this.price+"$"
+            diva.appendChild(text)
+
+            let text2 = document.createElement("h3")
+            text2.innerHTML="Amount: " + this.amount
+            diva.appendChild(text2)
+
+            
+
+            let ima = document.createElement("img")
+            ima.src=this.imga
+            ima.style=" width: 25%;"
+            diva.appendChild(ima)
+           
+            console.log(this.price)
+            ima.addEventListener("click", ()=> {
+                if (balance > 0) {
+                    console.log(balance)
+                    console.log(this.price)
+                    balance-=this.price;
+                    this.amount++;
+                    txt.innerHTML="balance: " + balance + "$"
+                    text2.innerHTML = "Amount: " + this.amount
+                    productec.push(this.name)
+                    updatelist()
+                }
+            })
+        }
+    };
+
+    const firsttowar = new newtowar("https://www.ecoticias.com/en/wp-content/uploads/2024/10/Tesla-Elon-Musk-Teslarati.jpg",45000, "tesla car")
+    firsttowar.spawn()
+
+    const secondtowar = new newtowar("https://thecostguys.com/wp-content/uploads/manhattan-ny-at-night.jpg",50000000, "build a Skyscraper")
+    secondtowar.spawn()
+</script>

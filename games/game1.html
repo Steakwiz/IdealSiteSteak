@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Clicker</h1>
+    <h2 id="text2">per click: 1</h2>
+    <h2 id="text">0</h2>
+    <button id="clickbt">click!</button>
+    <div id="up-list"></div>
+</body>
+</html>
+
+<script>
+    let bt = document.getElementById('clickbt')
+    let txt = document.getElementById("text")
+    let txt2 = document.getElementById("text2")
+    let uplist = document.getElementById("up-list")
+    let upgrades=0
+    let toclick=[1,5,10,25,50,100,500,1000]
+    let price=[10, 500, 1000, 2500, 8000, 15000, 50000,10000000]
+    let amnt= 0;
+    let perclick=1;
+    bt.addEventListener("click", function() {
+        if(amnt % 10===0 && toclick.length > upgrades) {
+            
+            let mineupgrade = upgrades
+            let toclickval = toclick[mineupgrade]
+            let cocliss = price[mineupgrade]
+            
+            let newbt = document.createElement("button")
+            uplist.appendChild(newbt)
+            newbt.innerHTML="+" + toclickval + " clicks, cost "+cocliss + "clicks"
+            upgrades++;
+            
+            newbt.addEventListener("click", function() {
+                console.log("hmm")
+                if (amnt>=cocliss) {
+                    cocliss[mineupgrade] *= 2
+                    console.log('enough')
+                    amnt -=cocliss
+                    perclick += toclickval
+                    txt.innerHTML=amnt;
+
+                    txt2.innerHTML="per click: " +perclick;
+                    toclickval = toclick[mineupgrade]
+                    cocliss = price[mineupgrade]
+                    newbt.innerHTML="+" + toclickval + " clicks, cost "+cocliss + "clicks"
+                    
+                }
+                
+            })
+        }
+        amnt += perclick;
+        txt.innerHTML = amnt;
+
+        
+    })
+</script>
